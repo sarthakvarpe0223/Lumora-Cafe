@@ -6,7 +6,7 @@ import {
   Clock,
 } from "lucide-react";
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="bg-[#17120f] text-[#f5efe6]">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-12">
