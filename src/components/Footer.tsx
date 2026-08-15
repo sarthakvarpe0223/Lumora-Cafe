@@ -5,178 +5,192 @@ import {
   MapPin,
   Clock,
 } from "lucide-react";
-import { FaInstagram, FaFacebookF } from "react-icons/fa";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const quickLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Menu", href: "#menu" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Contact", href: "#contact" },
-  ];
-
-  const socialLinks = [
-    {
-      label: "Instagram",
-      href: "#",
-      icon: FaInstagram,
-    },
-    {
-      label: "Facebook",
-      href: "#",
-      icon: FaFacebookF,
-    },
-  ];
-
+export default function Footer() {
   return (
-    <footer className="bg-[#211812] text-[#f5eee4]">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <footer className="bg-[#17120f] text-[#f5efe6]">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-12">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a
-              href="#home"
-              className="inline-block text-3xl font-semibold tracking-wide text-[#d9a45b]"
-            >
+            <h2 className="font-serif text-3xl tracking-wide text-[#d9a441]">
               Lumora
-            </a>
+            </h2>
 
-            <p className="mt-5 max-w-sm text-sm leading-7 text-[#c9bdb0]">
-              A warm, intimate café where exceptional coffee, thoughtful food,
-              and beautiful moments come together.
+            <p className="mt-4 max-w-sm text-sm leading-7 text-[#c9bdb1]">
+              A refined café experience where exceptional coffee,
+              thoughtful food, and warm hospitality come together.
             </p>
 
+            {/* Social links */}
             <div className="mt-6 flex items-center gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#5b4b3e] text-[#c9bdb1] transition-all duration-300 hover:border-[#d9a441] hover:text-[#d9a441]"
+              >
+                <span className="text-sm font-semibold">IG</span>
+              </a>
 
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[#665344] text-[#d9a45b] transition-all duration-300 hover:border-[#d9a45b] hover:bg-[#d9a45b] hover:text-[#211812]"
-                  >
-                    <Icon size={17} />
-                  </a>
-                );
-              })}
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#5b4b3e] text-[#c9bdb1] transition-all duration-300 hover:border-[#d9a441] hover:text-[#d9a441]"
+              >
+                <span className="text-sm font-semibold">f</span>
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Explore */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a45b]">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a441]">
               Explore
             </h3>
 
-            <ul className="mt-6 space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-[#c9bdb0] transition-colors duration-300 hover:text-[#d9a45b]"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+            <ul className="mt-6 space-y-4 text-sm text-[#c9bdb1]">
+              <li>
+                <a
+                  href="#home"
+                  className="transition-colors hover:text-[#d9a441]"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#menu"
+                  className="transition-colors hover:text-[#d9a441]"
+                >
+                  Menu
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#about"
+                  className="transition-colors hover:text-[#d9a441]"
+                >
+                  Our Story
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#gallery"
+                  className="transition-colors hover:text-[#d9a441]"
+                >
+                  Gallery
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a45b]">
-              Visit Us
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a441]">
+              Contact
             </h3>
 
             <div className="mt-6 space-y-5">
-              <div className="flex gap-3">
+
+              <div className="flex items-start gap-3">
                 <MapPin
                   size={18}
-                  className="mt-0.5 shrink-0 text-[#d9a45b]"
+                  strokeWidth={1.5}
+                  className="mt-0.5 shrink-0 text-[#d9a441]"
                 />
-                <p className="text-sm leading-6 text-[#c9bdb0]">
-                  24 Willow Street
+
+                <p className="text-sm leading-6 text-[#c9bdb1]">
+                  24 Lumora Lane
                   <br />
                   Mumbai, Maharashtra
                 </p>
               </div>
 
               <div className="flex items-center gap-3">
-                <Phone size={18} className="shrink-0 text-[#d9a45b]" />
+                <Phone
+                  size={18}
+                  strokeWidth={1.5}
+                  className="shrink-0 text-[#d9a441]"
+                />
+
                 <a
                   href="tel:+919999999999"
-                  className="text-sm text-[#c9bdb0] transition-colors hover:text-[#d9a45b]"
+                  className="text-sm text-[#c9bdb1] transition-colors hover:text-[#d9a441]"
                 >
                   +91 99999 99999
                 </a>
               </div>
 
               <div className="flex items-center gap-3">
-                <Mail size={18} className="shrink-0 text-[#d9a45b]" />
+                <Mail
+                  size={18}
+                  strokeWidth={1.5}
+                  className="shrink-0 text-[#d9a441]"
+                />
+
                 <a
                   href="mailto:hello@lumoracafe.com"
-                  className="text-sm text-[#c9bdb0] transition-colors hover:text-[#d9a45b]"
+                  className="text-sm text-[#c9bdb1] transition-colors hover:text-[#d9a441]"
                 >
                   hello@lumoracafe.com
                 </a>
               </div>
+
             </div>
           </div>
 
-          {/* Hours */}
+          {/* Opening Hours */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a45b]">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a441]">
               Opening Hours
             </h3>
 
-            <div className="mt-6 space-y-4">
-              <div className="flex gap-3">
-                <Clock
-                  size={18}
-                  className="mt-0.5 shrink-0 text-[#d9a45b]"
-                />
+            <div className="mt-6 flex items-start gap-3">
+              <Clock
+                size={18}
+                strokeWidth={1.5}
+                className="mt-0.5 shrink-0 text-[#d9a441]"
+              />
 
-                <div className="text-sm leading-6 text-[#c9bdb0]">
-                  <p>Monday – Friday</p>
-                  <p>8:00 AM – 10:00 PM</p>
+              <div className="space-y-2 text-sm leading-6 text-[#c9bdb1]">
+                <p>
+                  Monday – Friday
+                  <br />
+                  8:00 AM – 10:00 PM
+                </p>
 
-                  <p className="mt-3">Saturday – Sunday</p>
-                  <p>9:00 AM – 11:00 PM</p>
-                </div>
+                <p>
+                  Saturday – Sunday
+                  <br />
+                  9:00 AM – 11:00 PM
+                </p>
               </div>
-
-              <a
-                href="#reservation"
-                className="inline-flex items-center gap-2 pt-2 text-sm font-medium text-[#d9a45b] transition-colors hover:text-[#f5eee4]"
-              >
-                <MessageCircle size={17} />
-                Make a Reservation
-              </a>
             </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-14 border-t border-[#493a30] pt-7">
-          <div className="flex flex-col gap-4 text-xs text-[#8f8174] sm:flex-row sm:items-center sm:justify-between">
-            <p>© {currentYear} Lumora Café. All rights reserved.</p>
+        <div className="mt-14 border-t border-[#3c3129] pt-8">
+          <div className="flex flex-col gap-4 text-xs text-[#8f8175] sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {new Date().getFullYear()} Lumora Café. All rights reserved.
+            </p>
 
             <div className="flex gap-6">
               <a
                 href="#"
-                className="transition-colors hover:text-[#d9a45b]"
+                className="transition-colors hover:text-[#d9a441]"
               >
-                Privacy Policy
+                Privacy
               </a>
 
               <a
                 href="#"
-                className="transition-colors hover:text-[#d9a45b]"
+                className="transition-colors hover:text-[#d9a441]"
               >
                 Terms
               </a>
@@ -186,6 +200,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
