@@ -1,0 +1,600 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   LUMORA CAFÉ — DESIGN SYSTEM
+   Premium artisan café brand tokens
+   ============================================================ */
+
+@theme inline {
+  /* ── Semantic color mappings ── */
+  --color-background:           hsl(var(--background));
+  --color-foreground:           hsl(var(--foreground));
+  --color-border:               hsl(var(--border));
+  --color-input:                hsl(var(--input));
+  --color-ring:                 hsl(var(--ring));
+
+  --color-card:                 hsl(var(--card));
+  --color-card-foreground:      hsl(var(--card-foreground));
+  --color-card-border:          hsl(var(--card-border));
+
+  --color-popover:              hsl(var(--popover));
+  --color-popover-foreground:   hsl(var(--popover-foreground));
+  --color-popover-border:       hsl(var(--popover-border));
+
+  --color-primary:              hsl(var(--primary));
+  --color-primary-foreground:   hsl(var(--primary-foreground));
+  --color-primary-border:       var(--primary-border);
+
+  --color-secondary:            hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border:     var(--secondary-border);
+
+  --color-muted:                hsl(var(--muted));
+  --color-muted-foreground:     hsl(var(--muted-foreground));
+  --color-muted-border:         var(--muted-border);
+
+  --color-accent:               hsl(var(--accent));
+  --color-accent-foreground:    hsl(var(--accent-foreground));
+  --color-accent-border:        var(--accent-border);
+
+  --color-destructive:          hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border:   var(--destructive-border);
+
+  --color-chart-1:              hsl(var(--chart-1));
+  --color-chart-2:              hsl(var(--chart-2));
+  --color-chart-3:              hsl(var(--chart-3));
+  --color-chart-4:              hsl(var(--chart-4));
+  --color-chart-5:              hsl(var(--chart-5));
+
+  --color-sidebar:              hsl(var(--sidebar));
+  --color-sidebar-foreground:   hsl(var(--sidebar-foreground));
+  --color-sidebar-border:       hsl(var(--sidebar-border));
+  --color-sidebar-primary:      hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent:       hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring:         hsl(var(--sidebar-ring));
+
+  /* ── Lumora brand palette (raw tokens) ── */
+  --color-espresso:             hsl(var(--espresso));
+  --color-espresso-light:       hsl(var(--espresso-light));
+  --color-espresso-dark:        hsl(var(--espresso-dark));
+  --color-amber:                hsl(var(--amber));
+  --color-amber-light:          hsl(var(--amber-light));
+  --color-amber-dark:           hsl(var(--amber-dark));
+  --color-cream:                hsl(var(--cream));
+  --color-cream-dark:           hsl(var(--cream-dark));
+  --color-sage:                 hsl(var(--sage));
+  --color-sage-light:           hsl(var(--sage-light));
+  --color-warm-white:           hsl(var(--warm-white));
+  --color-overlay:              var(--overlay);
+  --color-overlay-heavy:        var(--overlay-heavy);
+  --color-glass:                var(--glass);
+  --color-glass-border:         var(--glass-border);
+
+  /* ── Typography ── */
+  --font-sans:    var(--app-font-sans);
+  --font-serif:   var(--app-font-serif);
+  --font-display: var(--app-font-display);
+  --font-mono:    var(--app-font-mono);
+
+  /* ── Radius system ── */
+  --radius-sm:  calc(var(--radius) - 4px);
+  --radius-md:  calc(var(--radius) - 2px);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-full: 9999px;
+
+  /* ── Spacing scale (4px base) ── */
+  --spacing: 0.25rem;
+}
+
+/* ============================================================
+   LIGHT MODE — Lumora Café Warm Palette
+   ============================================================ */
+:root {
+  --button-outline:               rgba(44, 24, 16, 0.12);
+  --badge-outline:                rgba(44, 24, 16, 0.06);
+  --opaque-button-border-intensity: -8;
+  --elevate-1:                    rgba(44, 24, 16, 0.03);
+  --elevate-2:                    rgba(44, 24, 16, 0.07);
+
+  /* ── Lumora Brand Palette ── */
+  /* Espresso: deep warm brown — #2C1810 */
+  --espresso:       22 47% 12%;
+  --espresso-light: 22 35% 22%;
+  --espresso-dark:  22 55% 8%;
+
+  /* Amber: warm golden tone — #C8963E */
+  --amber:          35 54% 51%;
+  --amber-light:    38 72% 68%;
+  --amber-dark:     30 58% 38%;
+
+  /* Cream: warm ivory — #FAF7F2 */
+  --cream:          42 67% 97%;
+  --cream-dark:     38 35% 91%;
+
+  /* Sage: muted eucalyptus green — #7C9E7B */
+  --sage:           119 14% 55%;
+  --sage-light:     120 18% 72%;
+
+  /* Warm white */
+  --warm-white:     42 100% 99%;
+
+  /* Overlays & glass */
+  --overlay:        rgba(44, 24, 16, 0.55);
+  --overlay-heavy:  rgba(44, 24, 16, 0.82);
+  --glass:          rgba(250, 247, 242, 0.72);
+  --glass-border:   rgba(200, 150, 62, 0.18);
+
+  /* ── Semantic Tokens ── */
+  --background:           42 67% 97%;   /* warm cream */
+  --foreground:           22 47% 12%;   /* espresso */
+  --border:               35 25% 85%;
+  --input:                35 25% 85%;
+  --ring:                 35 54% 51%;   /* amber ring */
+
+  --card:                 42 50% 99%;
+  --card-foreground:      22 47% 12%;
+  --card-border:          35 25% 88%;
+
+  --popover:              42 50% 99%;
+  --popover-foreground:   22 47% 12%;
+  --popover-border:       35 25% 88%;
+
+  --primary:              22 47% 12%;   /* espresso */
+  --primary-foreground:   42 67% 97%;   /* cream */
+
+  --secondary:            35 54% 51%;   /* amber */
+  --secondary-foreground: 42 67% 97%;
+
+  --muted:                38 28% 92%;
+  --muted-foreground:     22 20% 42%;
+
+  --accent:               119 14% 55%;  /* sage */
+  --accent-foreground:    42 67% 97%;
+
+  --destructive:          0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+
+  --chart-1:              35 54% 51%;   /* amber */
+  --chart-2:              22 47% 28%;   /* medium espresso */
+  --chart-3:              119 14% 55%;  /* sage */
+  --chart-4:              38 72% 68%;   /* amber-light */
+  --chart-5:              22 47% 12%;   /* espresso */
+
+  --sidebar:              38 35% 94%;
+  --sidebar-foreground:   22 47% 12%;
+  --sidebar-border:       35 20% 86%;
+  --sidebar-primary:      22 47% 12%;
+  --sidebar-primary-foreground: 42 67% 97%;
+  --sidebar-accent:       35 54% 51%;
+  --sidebar-accent-foreground: 42 67% 97%;
+  --sidebar-ring:         35 54% 51%;
+
+  /* ── Typography ── */
+  --app-font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --app-font-serif:   'Playfair Display', Georgia, 'Times New Roman', serif;
+  --app-font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --app-font-mono:    'JetBrains Mono', 'Fira Code', Menlo, monospace;
+
+  /* ── Radius ── */
+  --radius: 0.5rem;  /* 8px base */
+
+  /* ── Shadows (warm-tinted) ── */
+  --shadow-2xs: 0 1px 2px 0 hsl(22 47% 12% / 0.04);
+  --shadow-xs:  0 1px 3px 0 hsl(22 47% 12% / 0.06);
+  --shadow-sm:
+    0 1px 3px 0 hsl(22 47% 12% / 0.07),
+    0 1px 2px -1px hsl(22 47% 12% / 0.04);
+  --shadow:
+    0 4px 6px -1px hsl(22 47% 12% / 0.07),
+    0 2px 4px -2px hsl(22 47% 12% / 0.05);
+  --shadow-md:
+    0 8px 14px -3px hsl(22 47% 12% / 0.09),
+    0 3px 6px -3px hsl(22 47% 12% / 0.06);
+  --shadow-lg:
+    0 16px 28px -5px hsl(22 47% 12% / 0.12),
+    0 6px 12px -6px hsl(22 47% 12% / 0.07);
+  --shadow-xl:
+    0 24px 48px -8px hsl(22 47% 12% / 0.15),
+    0 10px 20px -8px hsl(22 47% 12% / 0.08);
+  --shadow-2xl: 0 40px 80px -16px hsl(22 47% 12% / 0.2);
+
+  /* ── Amber glow shadow (for CTAs, accents) ── */
+  --shadow-amber-sm: 0 4px 14px 0 hsl(35 54% 51% / 0.28);
+  --shadow-amber:    0 8px 24px 0 hsl(35 54% 51% / 0.32);
+  --shadow-amber-lg: 0 16px 48px 0 hsl(35 54% 51% / 0.36);
+
+  /* ── Transitions ── */
+  --transition-fast:   150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base:   250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow:   400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Tracking ── */
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.16em;
+
+  /* ── Auto-computed borders ── */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --sidebar-accent-border:  hsl(var(--sidebar-accent));
+  --sidebar-accent-border:  hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --primary-border:         hsl(var(--primary));
+  --primary-border:         hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --secondary-border:       hsl(var(--secondary));
+  --secondary-border:       hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --muted-border:           hsl(var(--muted));
+  --muted-border:           hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --accent-border:          hsl(var(--accent));
+  --accent-border:          hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+  --destructive-border:     hsl(var(--destructive));
+  --destructive-border:     hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+}
+
+/* ============================================================
+   DARK MODE — Deep Espresso Palette
+   ============================================================ */
+.dark {
+  --button-outline:               rgba(250, 247, 242, 0.10);
+  --badge-outline:                rgba(250, 247, 242, 0.06);
+  --opaque-button-border-intensity: 9;
+  --elevate-1:                    rgba(250, 247, 242, 0.04);
+  --elevate-2:                    rgba(250, 247, 242, 0.08);
+
+  /* Overlays & glass */
+  --overlay:        rgba(12, 7, 4, 0.70);
+  --overlay-heavy:  rgba(12, 7, 4, 0.90);
+  --glass:          rgba(30, 16, 9, 0.70);
+  --glass-border:   rgba(200, 150, 62, 0.14);
+
+  --background:           22 35% 7%;    /* very deep espresso */
+  --foreground:           42 40% 93%;   /* warm cream */
+  --border:               22 20% 18%;
+  --input:                22 20% 18%;
+  --ring:                 35 54% 51%;
+
+  --card:                 22 30% 10%;
+  --card-foreground:      42 40% 93%;
+  --card-border:          22 20% 16%;
+
+  --popover:              22 30% 10%;
+  --popover-foreground:   42 40% 93%;
+  --popover-border:       22 20% 16%;
+
+  --primary:              38 72% 68%;   /* amber-light (glows in dark) */
+  --primary-foreground:   22 47% 8%;
+
+  --secondary:            22 35% 22%;
+  --secondary-foreground: 42 40% 93%;
+
+  --muted:                22 25% 14%;
+  --muted-foreground:     42 20% 62%;
+
+  --accent:               119 18% 45%;
+  --accent-foreground:    42 40% 93%;
+
+  --destructive:          0 62% 45%;
+  --destructive-foreground: 0 0% 98%;
+
+  --chart-1:              38 72% 68%;
+  --chart-2:              35 54% 51%;
+  --chart-3:              119 18% 52%;
+  --chart-4:              22 35% 35%;
+  --chart-5:              42 40% 80%;
+
+  --sidebar:              22 35% 9%;
+  --sidebar-foreground:   42 40% 93%;
+  --sidebar-border:       22 20% 16%;
+  --sidebar-primary:      38 72% 68%;
+  --sidebar-primary-foreground: 22 47% 8%;
+  --sidebar-accent:       22 30% 18%;
+  --sidebar-accent-foreground: 42 40% 93%;
+  --sidebar-ring:         35 54% 51%;
+
+  --shadow-2xs: 0 1px 2px 0 hsl(22 55% 4% / 0.35);
+  --shadow-xs:  0 1px 3px 0 hsl(22 55% 4% / 0.45);
+  --shadow-sm:
+    0 1px 3px 0 hsl(22 55% 4% / 0.5),
+    0 1px 2px -1px hsl(22 55% 4% / 0.35);
+  --shadow:
+    0 4px 6px -1px hsl(22 55% 4% / 0.55),
+    0 2px 4px -2px hsl(22 55% 4% / 0.4);
+  --shadow-md:
+    0 8px 14px -3px hsl(22 55% 4% / 0.6),
+    0 3px 6px -3px hsl(22 55% 4% / 0.45);
+  --shadow-lg:
+    0 16px 28px -5px hsl(22 55% 4% / 0.65),
+    0 6px 12px -6px hsl(22 55% 4% / 0.5);
+  --shadow-xl:
+    0 24px 48px -8px hsl(22 55% 4% / 0.7),
+    0 10px 20px -8px hsl(22 55% 4% / 0.55);
+  --shadow-2xl: 0 40px 80px -16px hsl(22 55% 4% / 0.8);
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    /* Offset for fixed navbar (~80px scrolled + 4px breathing room) */
+    scroll-padding-top: 84px;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  /* Focus ring — accessible but minimal */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Smooth image rendering */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Fluid font scale — mobile first */
+  h1, .h1 { font-family: var(--app-font-display); font-size: clamp(2.25rem, 5vw, 4rem);   line-height: 1.1; letter-spacing: -0.02em; }
+  h2, .h2 { font-family: var(--app-font-serif);   font-size: clamp(1.75rem, 4vw, 3rem);   line-height: 1.2; letter-spacing: -0.015em; }
+  h3, .h3 { font-family: var(--app-font-serif);   font-size: clamp(1.25rem, 2.5vw, 2rem); line-height: 1.3; letter-spacing: -0.01em; }
+  h4, .h4 { font-family: var(--app-font-sans);    font-size: clamp(1.1rem, 1.8vw, 1.5rem); line-height: 1.4; }
+  h5, .h5 { font-family: var(--app-font-sans);    font-size: 1.125rem; line-height: 1.5; }
+  h6, .h6 { font-family: var(--app-font-sans);    font-size: 1rem;     line-height: 1.5; }
+
+  /* Selection color */
+  ::selection {
+    background-color: hsl(var(--amber) / 0.25);
+    color: hsl(var(--espresso));
+  }
+
+  /* Scrollbar (WebKit) */
+  ::-webkit-scrollbar          { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track    { background: hsl(var(--muted)); }
+  ::-webkit-scrollbar-thumb    { background: hsl(var(--amber) / 0.45); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--amber) / 0.65); }
+}
+
+/* ============================================================
+   UTILITY LAYER — Lumora-specific helpers
+   ============================================================ */
+@layer utilities {
+  /* Typography helpers */
+  .font-display  { font-family: var(--app-font-display); }
+  .font-serif    { font-family: var(--app-font-serif); }
+
+  /* Tracking / letter-spacing */
+  .tracking-cafe { letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.7em; }
+
+  /* ── Glassmorphism ── */
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-dark {
+    background: rgba(22, 12, 7, 0.72);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(200, 150, 62, 0.10);
+  }
+
+  /* ── Dark overlay (for hero images) ── */
+  .overlay {
+    position: relative;
+  }
+  .overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
+    pointer-events: none;
+  }
+
+  .overlay-heavy::after {
+    background: var(--overlay-heavy);
+  }
+
+  /* ── Amber glow utilities ── */
+  .shadow-amber-sm { box-shadow: var(--shadow-amber-sm); }
+  .shadow-amber    { box-shadow: var(--shadow-amber); }
+  .shadow-amber-lg { box-shadow: var(--shadow-amber-lg); }
+
+  /* ── Gradient helpers ── */
+  .gradient-espresso {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--espresso-dark)) 0%,
+      hsl(var(--espresso)) 60%,
+      hsl(var(--espresso-light)) 100%
+    );
+  }
+
+  .gradient-amber {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--amber-dark)) 0%,
+      hsl(var(--amber)) 60%,
+      hsl(var(--amber-light)) 100%
+    );
+  }
+
+  .gradient-cream {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--warm-white)) 0%,
+      hsl(var(--cream)) 50%,
+      hsl(var(--cream-dark)) 100%
+    );
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(var(--espresso-dark) / 0.7) 70%,
+      hsl(var(--espresso-dark) / 0.95) 100%
+    );
+  }
+
+  /* ── Text gradient ── */
+  .text-gradient-amber {
+    background: linear-gradient(135deg, hsl(var(--amber-dark)), hsl(var(--amber-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Image cover fill ── */
+  .img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* ── Responsive container ── */
+  .container-cafe {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
+  }
+
+  /* ── Section spacing ── */
+  .section-padding {
+    padding-top:    clamp(4rem, 8vw, 8rem);
+    padding-bottom: clamp(4rem, 8vw, 8rem);
+  }
+
+  /* ── Animated underline ── */
+  .underline-animate {
+    position: relative;
+    display: inline-block;
+  }
+  .underline-animate::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: hsl(var(--amber));
+    transition: width var(--transition-base);
+  }
+  .underline-animate:hover::after { width: 100%; }
+
+  /* ── Transition utilities ── */
+  .transition-fast   { transition: all var(--transition-fast); }
+  .transition-base   { transition: all var(--transition-base); }
+  .transition-slow   { transition: all var(--transition-slow); }
+  .transition-spring { transition: all var(--transition-spring); }
+
+  /* ── Accessibility: skip link ── */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.5rem 1rem;
+    z-index: 9999;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: top var(--transition-fast);
+  }
+  .skip-link:focus { top: 4px; }
+
+  /* ── Elevation system (inherited from scaffold) ── */
+  input[type='search']::-webkit-search-cancel-button { @apply hidden; }
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  .no-default-hover-elevate  {}
+  .no-default-active-elevate {}
+
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  .toggle-elevate.toggle-elevated::before { background-color: var(--elevate-2); }
+  .border.toggle-elevate::before           { inset: -1px; }
+
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: inherit;
+    z-index: 999;
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after  { background-color: var(--elevate-1); }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after { background-color: var(--elevate-2); }
+
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after { inset: -1px; }
+}
