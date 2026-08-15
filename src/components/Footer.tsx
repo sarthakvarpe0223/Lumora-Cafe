@@ -1,287 +1,191 @@
-import { motion } from 'framer-motion';
-import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react';
-import { phoneLink, whatsappLink, CONTACT } from '@/constants/contact';
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Clock,
+} from "lucide-react";
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
 
-// ── Constants ─────────────────────────────────────────────────────────────────
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
 
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
+  const quickLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Menu", href: "#menu" },
+    { label: "Gallery", href: "#gallery" },
+    { label: "Contact", href: "#contact" },
+  ];
 
-const QUICK_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'Menu', href: '#menu' },
-  { label: 'About', href: '#about' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Contact', href: '#contact' },
-];
-
-// ── Sub-components ────────────────────────────────────────────────────────────
-
-function FooterHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="font-display text-lg text-cream mb-5 relative inline-block">
-      {children}
-      <span className="absolute -bottom-1.5 left-0 w-8 h-0.5 bg-amber rounded-full" />
-    </h3>
-  );
-}
-
-function FooterLink({
-  href,
-  external,
-  children,
-  ariaLabel,
-}: {
-  href: string;
-  external?: boolean;
-  children: React.ReactNode;
-  ariaLabel?: string;
-}) {
-  return (
-    <a
-      href={href}
-      aria-label={ariaLabel}
-      target={external ? '_blank' : undefined}
-      rel={external ? 'noopener noreferrer' : undefined}
-      className="
-        text-cream/50 hover:text-amber text-sm leading-relaxed
-        transition-colors duration-250
-        focus-visible:outline-none focus-visible:text-amber
-      "
-    >
-      {children}
-    </a>
-  );
-}
-
-// ── Section ───────────────────────────────────────────────────────────────────
-
-export function Footer() {
-  const currentYear = 2026;
+  const socialLinks = [
+    {
+      label: "Instagram",
+      href: "#",
+      icon: FaInstagram,
+    },
+    {
+      label: "Facebook",
+      href: "#",
+      icon: FaFacebookF,
+    },
+  ];
 
   return (
-    <footer
-      className="bg-espresso-dark relative overflow-hidden"
-      role="contentinfo"
-      aria-label="Lumora Café footer"
-      style={{ background: 'hsl(22,50%,8%)' }}
-    >
-      {/* Decorative top border */}
-      <div
-        className="h-px w-full"
-        style={{
-          background:
-            'linear-gradient(to right, transparent, rgba(191,141,61,0.5), transparent)',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Subtle glow */}
-      <div
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px]"
-        style={{
-          background:
-            'radial-gradient(ellipse at 50% 0%, rgba(191,141,61,0.07) 0%, transparent 70%)',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative container-cafe pt-16 pb-8">
-        {/* Four-column grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-14"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9, ease: EASE }}
-        >
-          {/* Col 1 — Brand */}
+    <footer className="bg-[#211812] text-[#f5eee4]">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
           <div className="lg:col-span-1">
             <a
               href="#home"
-              className="inline-block mb-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 rounded"
+              className="inline-block text-3xl font-semibold tracking-wide text-[#d9a45b]"
             >
-              <span className="font-display text-2xl text-cream tracking-tight">
-                Lumora <em className="text-gradient-amber not-italic">Café</em>
-              </span>
+              Lumora
             </a>
 
-            <p className="text-cream/50 text-sm leading-relaxed mb-6">
-              A warm corner of Mumbai where every cup is brewed with intention.
-              We believe great coffee is a ritual — not a transaction.
-              Come as you are. Stay as long as you like.
+            <p className="mt-5 max-w-sm text-sm leading-7 text-[#c9bdb0]">
+              A warm, intimate café where exceptional coffee, thoughtful food,
+              and beautiful moments come together.
             </p>
 
-            {/* Social / Contact icons */}
-            <div className="flex gap-3">
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp"
-                className="w-9 h-9 rounded-full bg-white/6 border border-white/10 flex items-center justify-center
-                  text-cream/50 hover:text-amber hover:border-amber/30 transition-all duration-250
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
+            <div className="mt-6 flex items-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
 
-              <a
-                href={phoneLink()}
-                aria-label={`Call ${CONTACT.phoneDisplay}`}
-                className="w-9 h-9 rounded-full bg-white/6 border border-white/10 flex items-center justify-center
-                  text-cream/50 hover:text-amber hover:border-amber/30 transition-all duration-250
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50"
-              >
-                <Phone className="w-4 h-4" />
-              </a>
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[#665344] text-[#d9a45b] transition-all duration-300 hover:border-[#d9a45b] hover:bg-[#d9a45b] hover:text-[#211812]"
+                  >
+                    <Icon size={17} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Col 2 — Quick Links */}
+          {/* Quick Links */}
           <div>
-            <FooterHeading>Quick Links</FooterHeading>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a45b]">
+              Explore
+            </h3>
 
-            <nav aria-label="Footer quick links">
-              <ul className="space-y-2.5">
-                {QUICK_LINKS.map(({ label, href }) => (
-                  <li key={label}>
-                    <FooterLink href={href}>{label}</FooterLink>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <ul className="mt-6 space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-[#c9bdb0] transition-colors duration-300 hover:text-[#d9a45b]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Col 3 — Contact */}
+          {/* Contact */}
           <div>
-            <FooterHeading>Contact Us</FooterHeading>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a45b]">
+              Visit Us
+            </h3>
 
-            <address className="not-italic space-y-3.5">
-              <a
-                href={phoneLink()}
-                aria-label={`Call us at ${CONTACT.phoneDisplay}`}
-                className="flex items-start gap-3 text-cream/50 hover:text-amber text-sm transition-colors duration-250
-                  focus-visible:outline-none focus-visible:text-amber"
-              >
-                <Phone
-                  className="w-4 h-4 text-amber flex-shrink-0 mt-0.5"
-                  aria-hidden="true"
-                />
-                <span>{CONTACT.phoneDisplay}</span>
-              </a>
-
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp"
-                className="flex items-start gap-3 text-cream/50 hover:text-amber text-sm transition-colors duration-250
-                  focus-visible:outline-none focus-visible:text-amber"
-              >
-                <MessageCircle
-                  className="w-4 h-4 text-amber flex-shrink-0 mt-0.5"
-                  aria-hidden="true"
-                />
-                <span>WhatsApp Us</span>
-              </a>
-
-              <a
-                href="mailto:hello@lumoracafe.com"
-                aria-label="Email us at hello@lumoracafe.com"
-                className="flex items-start gap-3 text-cream/50 hover:text-amber text-sm transition-colors duration-250
-                  focus-visible:outline-none focus-visible:text-amber"
-              >
-                <Mail
-                  className="w-4 h-4 text-amber flex-shrink-0 mt-0.5"
-                  aria-hidden="true"
-                />
-                <span>hello@lumoracafe.com</span>
-              </a>
-
-              <div className="flex items-start gap-3 text-cream/50 text-sm">
+            <div className="mt-6 space-y-5">
+              <div className="flex gap-3">
                 <MapPin
-                  className="w-4 h-4 text-amber flex-shrink-0 mt-0.5"
-                  aria-hidden="true"
+                  size={18}
+                  className="mt-0.5 shrink-0 text-[#d9a45b]"
                 />
-                <span>Mumbai, Maharashtra</span>
-              </div>
-            </address>
-          </div>
-
-          {/* Col 4 — Opening Hours */}
-          <div>
-            <FooterHeading>Opening Hours</FooterHeading>
-
-            <div className="space-y-4">
-              <div>
-                <p className="text-amber text-sm font-semibold mb-0.5">
-                  Monday – Friday
+                <p className="text-sm leading-6 text-[#c9bdb0]">
+                  24 Willow Street
+                  <br />
+                  Mumbai, Maharashtra
                 </p>
-
-                <div className="flex items-center gap-2 text-cream/50 text-sm">
-                  <Clock
-                    className="w-3.5 h-3.5 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span>8:00 AM – 10:00 PM</span>
-                </div>
               </div>
 
-              <div>
-                <p className="text-amber text-sm font-semibold mb-0.5">
-                  Saturday – Sunday
-                </p>
-
-                <div className="flex items-center gap-2 text-cream/50 text-sm">
-                  <Clock
-                    className="w-3.5 h-3.5 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span>8:00 AM – 11:00 PM</span>
-                </div>
+              <div className="flex items-center gap-3">
+                <Phone size={18} className="shrink-0 text-[#d9a45b]" />
+                <a
+                  href="tel:+919999999999"
+                  className="text-sm text-[#c9bdb0] transition-colors hover:text-[#d9a45b]"
+                >
+                  +91 99999 99999
+                </a>
               </div>
 
-              <div
-                className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full
-                  bg-green-900/30 border border-green-500/20"
-              >
-                <span
-                  className="w-2 h-2 rounded-full bg-green-400 animate-pulse"
-                  aria-hidden="true"
-                />
-
-                <span className="text-green-400 text-xs font-medium">
-                  Open Now
-                </span>
+              <div className="flex items-center gap-3">
+                <Mail size={18} className="shrink-0 text-[#d9a45b]" />
+                <a
+                  href="mailto:hello@lumoracafe.com"
+                  className="text-sm text-[#c9bdb0] transition-colors hover:text-[#d9a45b]"
+                >
+                  hello@lumoracafe.com
+                </a>
               </div>
             </div>
           </div>
-        </motion.div>
 
-        {/* Divider */}
-        <div
-          className="h-px mb-7"
-          style={{
-            background:
-              'linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent)',
-          }}
-          aria-hidden="true"
-        />
+          {/* Hours */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#d9a45b]">
+              Opening Hours
+            </h3>
 
-        {/* Bottom row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-cream/35 text-sm">
-          <p>© {currentYear} Lumora Café. All rights reserved.</p>
+            <div className="mt-6 space-y-4">
+              <div className="flex gap-3">
+                <Clock
+                  size={18}
+                  className="mt-0.5 shrink-0 text-[#d9a45b]"
+                />
 
-          <p className="flex items-center gap-1">
-            Designed with{' '}
-            <span className="text-amber" aria-label="love">
-              ❤️
-            </span>{' '}
-            for great coffee
-          </p>
+                <div className="text-sm leading-6 text-[#c9bdb0]">
+                  <p>Monday – Friday</p>
+                  <p>8:00 AM – 10:00 PM</p>
+
+                  <p className="mt-3">Saturday – Sunday</p>
+                  <p>9:00 AM – 11:00 PM</p>
+                </div>
+              </div>
+
+              <a
+                href="#reservation"
+                className="inline-flex items-center gap-2 pt-2 text-sm font-medium text-[#d9a45b] transition-colors hover:text-[#f5eee4]"
+              >
+                <MessageCircle size={17} />
+                Make a Reservation
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-14 border-t border-[#493a30] pt-7">
+          <div className="flex flex-col gap-4 text-xs text-[#8f8174] sm:flex-row sm:items-center sm:justify-between">
+            <p>© {currentYear} Lumora Café. All rights reserved.</p>
+
+            <div className="flex gap-6">
+              <a
+                href="#"
+                className="transition-colors hover:text-[#d9a45b]"
+              >
+                Privacy Policy
+              </a>
+
+              <a
+                href="#"
+                className="transition-colors hover:text-[#d9a45b]"
+              >
+                Terms
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
