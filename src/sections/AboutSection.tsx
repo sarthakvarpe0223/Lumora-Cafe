@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Coffee, Cookie, Leaf, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-import interiorImg from '@assets/interior/tasha-kostyuk-yGAXnEqpvVk-unsplash.jpg';
+import interiorImg from '@assets/chef/nathan-dumlao-OvqNB-hDBDI-unsplash.jpg';
 import chefImg     from '@assets/chef/nathan-dumlao-OvqNB-hDBDI-unsplash.jpg';
 
 // ── Constants ──────────────────────────────────────────────────────────────────
